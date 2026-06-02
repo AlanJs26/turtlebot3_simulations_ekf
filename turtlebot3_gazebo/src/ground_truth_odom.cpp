@@ -18,15 +18,13 @@ public:
 
     void Load(physics::ModelPtr model, sdf::ElementPtr sdf) override
     {
-      gzmsg << "[GroundTruthOdomPlugin] Inicializado.\n";
-      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Bumper plugin: Starting!");
       model_ = model;
 
       link_ = model_->GetLink("base_link");
 
       if (!link_)
       {
-        gzerr << "[GroundTruthOdomPlugin] base_link não encontrado!\n";
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "[GroundTruthOdomPlugin] base_link não encontrado!");
         return;
       }
 
@@ -38,7 +36,7 @@ public:
       node_ = std::make_shared<rclcpp::Node>("ground_truth_odom");
 
       pub_ = node_->create_publisher<nav_msgs::msg::Odometry>(
-          "/odom_sim", 10);
+          "/odom_gt", 10);
 
       update_connection_ =
         event::Events::ConnectWorldUpdateBegin(
@@ -46,7 +44,7 @@ public:
 
       last_time_ = model_->GetWorld()->SimTime();
 
-      gzmsg << "[GroundTruthOdomPlugin] Inicializado.\n";
+      RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "[GroundTruthOdomPlugin] Inicializado.");
     }
 
 private:

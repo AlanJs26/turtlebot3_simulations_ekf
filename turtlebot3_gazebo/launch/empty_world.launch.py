@@ -44,11 +44,7 @@ def generate_launch_description():
     gazebo_plugin_path=str(Path(pkgshare).parent.parent / "lib" / "turtlebot3_gazebo")
     environment_variable_cmd = SetEnvironmentVariable(
         name='GAZEBO_PLUGIN_PATH',
-        value=[ 
-            EnvironmentVariable('GAZEBO_PLUGIN_PATH'),
-            ':',
-            gazebo_plugin_path
-        ]
+        value=gazebo_plugin_path
     )
 
     gzserver_cmd = IncludeLaunchDescription(
