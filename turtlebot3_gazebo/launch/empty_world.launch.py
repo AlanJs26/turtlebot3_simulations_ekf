@@ -20,13 +20,15 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, EnvironmentVariable
+from pathlib import Path
 
 
 def generate_launch_description():
-    launch_file_dir = os.path.join(get_package_share_directory('turtlebot3_gazebo'), 'launch')
+    pkgshare = get_package_share_directory('turtlebot3_gazebo')
+    launch_file_dir = os.path.join(pkgshare, 'launch')
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
@@ -34,9 +36,19 @@ def generate_launch_description():
     y_pose = LaunchConfiguration('y_pose', default='0.0')
 
     world = os.path.join(
-        get_package_share_directory('turtlebot3_gazebo'),
+        pkgshare,
         'worlds',
         'empty_world.world'
+    )
+
+    gazebo_plugin_path=str(Path(pkgshare).parent.parent / "lib" / "turtlebot3_gazebo")
+    environment_variable_cmd = SetEnvironmentVariable(
+        name='GAZEBO_PLUGIN_PATH',
+        value=[ 
+            EnvironmentVariable('GAZEBO_PLUGIN_PATH'),
+            ':',
+            gazebo_plugin_path
+        ]
     )
 
     gzserver_cmd = IncludeLaunchDescription(
@@ -72,6 +84,7 @@ def generate_launch_description():
     ld = LaunchDescription()
 
     # Add the commands to the launch description
+    ld.add_action(environment_variable_cmd)
     ld.add_action(gzserver_cmd)
     ld.add_action(gzclient_cmd)
     ld.add_action(robot_state_publisher_cmd)

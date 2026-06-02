@@ -57,7 +57,16 @@ add_library(traffic_light_plugin SHARED src/traffic_light_plugin.cpp)
 target_link_libraries(traffic_light_plugin ${GAZEBO_LIBRARIES})
 
 add_library(traffic_bar_plugin SHARED src/traffic_bar_plugin.cpp)
-target_link_libraries(traffic_bar_plugin ${GAZEBO_LIBRARIES})
+target_link_libraries(traffic_bar_plugin   ${GAZEBO_LIBRARIES})
+
+add_library(ground_truth_odom SHARED src/ground_truth_odom.cpp)
+target_link_libraries(ground_truth_odom ${GAZEBO_LIBRARIES})
+ament_target_dependencies(ground_truth_odom ${dependencies})
+install(TARGETS
+  ground_truth_odom
+  DESTINATION lib/${PROJECT_NAME}
+)
+ament_export_libraries(ground_truth_odom)  
 
 add_library(obstacle1 SHARED src/obstacle1.cpp)
 target_link_libraries(obstacle1 ${GAZEBO_LIBRARIES})
