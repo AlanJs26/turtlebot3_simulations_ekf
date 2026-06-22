@@ -1,0 +1,99 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# user setting
+*.*~
+*.bak
+.svn
+.tags
+.tags_sorted_by_file
+*.cfgc
+*.txt.user*
+*-build/
+cpp/
+bin/
+build/
+msg_gen/
+srv_gen/
+docs/
+lib/
+cmake_install.cmake
+Makefile
+CMakeFiles/
+assets/
+gen/
+build.xml
+lint.xml
+local.properties
+proguard-project.txt
+build-*/
+*.autosave
+*.pyc
+*.dat
+*.txt.user
+*.gch
+/.project
+.DS_Store
+
+# === Matlab ===
+
+# Autosave files
+*.asv
+*.m~
+*.autosave
+*.slx.r*
+*.mdl.r*
+*.bak
+
+# Derived content-obscured files
+*.p
+
+# Compiled MEX files
+*.mex*
+
+# Packaged app and toolbox files
+*.mlappinstall
+*.mltbx
+
+# Deployable archives
+*.ctf
+
+# Generated helpsearch folders
+helpsearch*/
+
+# Code generation folders
+slprj/
+sccprj/
+codegen/
+
+# Cache files
+*.slxc
+
+# Cloud based storage dotfile
+.MATLABDriveTag

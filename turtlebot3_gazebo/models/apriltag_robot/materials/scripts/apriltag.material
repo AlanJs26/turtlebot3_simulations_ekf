@@ -1,0 +1,15 @@
+material AprilTag/TagRobot
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      texture_unit
+      {
+        texture apriltag_robot.png
+        filtering none
+      }
+    }
+  }
+}

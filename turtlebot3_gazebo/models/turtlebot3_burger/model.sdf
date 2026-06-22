@@ -137,6 +137,22 @@
         </material>
       </visual>
 
+      <visual name="apriltag_visual">
+        <pose>-0.032 0 0.215 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.1 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://apriltag_robot/materials/scripts</uri>
+            <uri>model://apriltag_robot/materials/textures</uri>
+            <name>AprilTag/TagRobot</name>
+          </script>
+        </material>
+      </visual>
+
       <sensor name="hls_lfcd_lds" type="ray">
         <always_on>true</always_on>
         <visualize>false</visualize>

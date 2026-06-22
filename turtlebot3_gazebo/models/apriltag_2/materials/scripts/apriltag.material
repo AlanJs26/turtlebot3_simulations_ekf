@@ -1,0 +1,15 @@
+material AprilTag/Tag2
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      texture_unit
+      {
+        texture apriltag_2.png
+        filtering none
+      }
+    }
+  }
+}
