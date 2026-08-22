@@ -59,14 +59,18 @@ def spawn_entities(context, *args, **kwargs):
                 yaml_data["/**"] = {}
             if "ros__parameters" not in yaml_data["/**"]:
                 yaml_data["/**"]["ros__parameters"] = {}
-            
+
             params = yaml_data["/**"]["ros__parameters"]
             params["boundary_ids"] = [0, 1, 2, 4]
             params["boundary_positions"] = [
-                float(-x_max), float(-y_max),
-                float(x_max), float(-y_max),
-                float(x_max), float(y_max),
-                float(-x_max), float(y_max)
+                float(-x_max),
+                float(-y_max),
+                float(x_max),
+                float(-y_max),
+                float(x_max),
+                float(y_max),
+                float(-x_max),
+                float(y_max),
             ]
 
             with open(config_path, "w") as f:
