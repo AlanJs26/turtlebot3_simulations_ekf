@@ -47,7 +47,7 @@ def spawn_entities(context, *args, **kwargs):
 
     # 2. Update config file (tags.yaml) in the workspace to synchronize tracker calibration
     config_path = (
-        "/root/turtlebot3_ws/workspace/turtlebot3_apriltag_rerun/config/tags.yaml"
+        "/root/turtlebot3_ws/workspace/tcc_apriltag/config/tags.yaml"
     )
     if os.path.exists(config_path):
         try:
